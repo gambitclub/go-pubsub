@@ -15,6 +15,7 @@ The **PubSub** package implements a Publish/Subscribe messaging system with guar
     - [Applying Brand and Metadata](#applying-brand-and-metadata)
     - [Adding an Error to a Response](#adding-an-error-to-a-response)
 - [Authentication and Connection](#authentication-and-connection)
+- [Tests](#tests)
 - [License](#license)
 
 ## Overview
@@ -247,6 +248,13 @@ func publishWithError(client *pubsub.Client) {
 - **BROKER_SECRET:** `some_secret_key`
 
 Make sure that BROKER_HOST and BROKER_SECRET are correctly set in your environment and that the broker’s certificates are available for TLS verification.
+
+## Tests
+The package includes unit tests to ensure the functionality of the PubSub client.
+To run the tests, use the following command:
+```bash
+go test -v ./...
+```
 
 ## License
 This project is licensed under the MIT License.
