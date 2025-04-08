@@ -98,21 +98,21 @@ func New(opts Options) *Client {
 			panic("empty shard string")
 		}
 		// A shard string should be in the format: "protocol.host:port1.port2"
-		parts := strings.Split(s, ":")
+		parts := strings.Split(s, "::")
 		if len(parts) != 2 {
 			panic(fmt.Sprintf("invalid shard format: %s", s))
 		}
 		urls := parts[0]
 		ports := parts[1]
 		// Parse the URL part into protocol and host.
-		parts = strings.Split(urls, ".")
+		parts = strings.Split(urls, ":")
 		if len(parts) != 2 {
 			panic(fmt.Sprintf("invalid url format: %s", urls))
 		}
 		protocol := parts[0]
 		host := parts[1]
 		// Parse the ports part into HTTP and gRPC port strings.
-		parts = strings.Split(ports, ".")
+		parts = strings.Split(ports, ":")
 		if len(parts) != 2 {
 			panic(fmt.Sprintf("invalid ports format: %s", ports))
 		}
