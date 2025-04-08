@@ -154,9 +154,6 @@ func (s *shard) observe() {
 		s.handleError(err)
 		return
 	}
-
-	// Reset reconnection attempt counter.
-	s.attempt = 0
 	// Create a cancellable context from the stream's context.
 	ctx, cancel := context.WithCancel(stream.Context())
 	// Start a goroutine to continuously receive messages from the stream.
@@ -168,6 +165,8 @@ func (s *shard) observe() {
 				// Process received message based on its Name.
 				switch msg.Name {
 				case "_.hello":
+					// Reset reconnection attempt counter.
+					s.attempt = 0
 					// For a "hello" message, start watching the outgoing messages.
 					s.watchMessage(stream, cancel)
 				default:
