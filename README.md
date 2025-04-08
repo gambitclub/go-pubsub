@@ -41,7 +41,7 @@ The **PubSub** package allows you to:
 Use Go modules to install the package:
 
 ```bash
-go get github.com/yourusername/yourpubsubrepo
+go get github.com/gambitclub/go-pubsub
 ```
 Make sure the dependencies for gRPC and Protobuf are installed.
 
