@@ -72,7 +72,7 @@ import (
 	"log"
 	"os"
 	"strings"
-	"pubsub/client/pkg/pubsub"
+	"github.com/gambitclub/go-pubsub"
 )
 
 func main() {
@@ -108,7 +108,7 @@ import (
 	"fmt"
 	"log"
 	"time"
-	"pubsub/client/pkg/pubsub"
+	"github.com/gambitclub/go-pubsub"
 )
 
 func publishMessage(client *pubsub.Client) {
@@ -147,7 +147,7 @@ package main
 import (
 	"context"
 	"log"
-	"pubsub/client/pkg/pubsub"
+	"github.com/gambitclub/go-pubsub"
 )
 
 func subscribeToEvents(client *pubsub.Client) {
@@ -168,7 +168,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"pubsub/client/pkg/pubsub"
+	"github.com/gambitclub/go-pubsub"
 )
 
 func requestResponse(client *pubsub.Client) {
@@ -191,7 +191,7 @@ package main
 import (
 	"context"
 	"log"
-	"pubsub/client/pkg/pubsub"
+	"github.com/gambitclub/go-pubsub"
 )
 
 func publishWithMetadata(client *pubsub.Client) {
@@ -223,7 +223,7 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"pubsub/client/pkg/pubsub"
+	"github.com/gambitclub/go-pubsub"
 )
 
 func publishWithError(client *pubsub.Client) {
