@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package model;
+
+option go_package = "pubsub/model";
+
+service PubSub {
+  rpc Channel (stream Message) returns (stream Message) {}
+}
+
+message Message {
+  // Unique identifier for the event
+  string id = 1;
+  // Name of the event
+  string name = 2;
+  // Brand associated with the event
+  string brand = 3;
+  // Metadata use as headers in a standard REST API
+  // e.g., to transmit the user's language.
+  map<string, string> metadata = 4;
+  // Payload of the event, can be any binary data
+  bytes payload = 5;
+  // Error message if any error occurred
+  string error = 6;
+  // Ack set true if delivery guarantee is required
+  bool ack = 7;
+  // Timestamp of the event in milliseconds since epoch
+  int64 timestamp = 8;
+}
