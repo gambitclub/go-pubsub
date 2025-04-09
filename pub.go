@@ -91,9 +91,13 @@ func (p *Pub) Sub(event string) ([]byte, error) {
 		Brand:     p.brand,                // Use brand.
 		Metadata:  p.meta,                 // Attach additional metadata.
 		Payload:   p.payload,              // Attach payload data.
-		Error:     p.error.Error(),        // Attach error details (if any) as a string.
 		Ack:       p.ack,                  // Include acknowledgment flag.
 		Timestamp: time.Now().UnixMilli(), // Current timestamp in milliseconds.
+	}
+
+	// Attach error details (if any) as a string.
+	if p.error != nil {
+		msg.Error = p.error.Error() // Set error message if exists.
 	}
 
 	// Create a new callback channel to wait for the response.
