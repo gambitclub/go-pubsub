@@ -245,13 +245,13 @@ func (s *shard) getConnect() (*grpc.ClientConn, error) {
 	// Read the certificate data from the response.
 	certData, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "failed to read certificate data: %v", err)
+		return nil, status.Errorf(codes.Canceled, "failed to read certificate data: %v", err)
 	}
 	// Create a new certificate pool.
 	certPool := x509.NewCertPool()
 	// Append the certificate data to the certificate pool.
 	if ok := certPool.AppendCertsFromPEM(certData); !ok {
-		return nil, status.Errorf(codes.InvalidArgument, "failed to append certificate")
+		return nil, status.Errorf(codes.Canceled, "failed to append certificate")
 	}
 	// Configure TLS with the created certificate pool and server name.
 	tlsConfig := &tls.Config{
