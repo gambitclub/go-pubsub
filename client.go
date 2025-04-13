@@ -52,6 +52,8 @@ type Options struct {
 	Pubs []string
 	// AckTimeout - The timeout duration used for waiting for acknowledgments.
 	AckTimeout time.Duration
+	// Only root - Indicates if the module is a root module.
+	OnlyRoot bool
 }
 
 // New creates and configures a new PubSub client instance based on provided Options.
@@ -120,17 +122,18 @@ func New(opts Options) *Client {
 		hGrpc := parts[1]
 		// Create a shard with the parsed values and add it to the shardStore.
 		c.shard.Add(shardAddOptions{
-			Out:      out,         // Outgoing messages channel.
-			In:       in,          // Incoming messages channel.
-			Protocol: protocol,    // Protocol (e.g., "http").
-			Host:     host,        // Host address.
-			Http:     hHttp,       // HTTP port.
-			Grpc:     hGrpc,       // gRPC port.
-			Secret:   opts.Secret, // Authentication token.
-			Brand:    opts.Brand,  // Brand identifier.
-			Module:   opts.Module, // Module identifier.
-			Subs:     opts.Subs,   // List of subscribed events.
-			Pubs:     opts.Pubs,   // List of published events.
+			Out:      out,           // Outgoing messages channel.
+			In:       in,            // Incoming messages channel.
+			Protocol: protocol,      // Protocol (e.g., "http").
+			Host:     host,          // Host address.
+			Http:     hHttp,         // HTTP port.
+			Grpc:     hGrpc,         // gRPC port.
+			Secret:   opts.Secret,   // Authentication token.
+			Brand:    opts.Brand,    // Brand identifier.
+			Module:   opts.Module,   // Module identifier.
+			Subs:     opts.Subs,     // List of subscribed events.
+			Pubs:     opts.Pubs,     // List of published events.
+			OnlyRoot: opts.OnlyRoot, // Indicates if the module is a root module.
 		})
 	}
 	return c
